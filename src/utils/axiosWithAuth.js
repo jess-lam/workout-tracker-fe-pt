@@ -7,7 +7,7 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: token
         },
-        baseURL: `` 
+        baseURL: `https://fit-tracker-labs.herokuapp.com/` 
     })
 }
 

@@ -5,6 +5,7 @@ import CreateComment from "./CreateComment";
 import NavigationBar from "../navigationbar/navigationbar";
 import MobileNav from "../../components/mobilenav/MobileNav";
 import {FeedBox, Wrapper, NavCircle, PageTitle} from "./style";
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 export default class feed extends Component {
   constructor(props) {
@@ -19,7 +20,8 @@ export default class feed extends Component {
 
   getFeed() {
     if (localStorage.getItem("token") !== undefined) {
-      Axios.get("https://frozen-hamlet-18508.herokuapp.com/api/feed") //eventually change this to followers driven feed
+      axiosWithAuth()
+      .get("/api/feed") //eventually change this to followers driven feed
         .then((res) => {
           this.setState({ ...this.state, feed: res.data.message });
         })
@@ -27,7 +29,8 @@ export default class feed extends Component {
           console.log(err);
         });
     } else {
-      Axios.get("https://frozen-hamlet-18508.herokuapp.com/api/feed")
+      axiosWithAuth()
+      .get("/api/feed")
         .then((res) => {
           this.setState({ ...this.state, feed: res.data.message });
         })
