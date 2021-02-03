@@ -55,7 +55,7 @@ export const WorkoutForm = () => {
     console.log(formValues);
     axiosWithAuth()
       .post(
-        "https://frozen-hamlet-18508.herokuapp.com/api/workouts",
+        "/api/workouts",
         formValues
       )
       .then((res) => {

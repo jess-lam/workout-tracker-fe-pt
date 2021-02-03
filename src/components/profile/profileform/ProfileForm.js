@@ -22,7 +22,7 @@ const ProfileForm = () => {
     //provides the info for the specific user that is logged in.
     const { subject } = decode(localStorage.getItem("token"));
     axiosWithAuth()
-      .get(`https://frozen-hamlet-18508.herokuapp.com/api/users/${subject}`)
+      .get(`/api/users/${subject}`)
       .then((res) => {
         setUserInfo(res.data);
         console.log("res.data", res.data);
@@ -35,7 +35,7 @@ const ProfileForm = () => {
   const editProfileInfo = () => {
     //provides the info for the specific user that is logged in.
     axiosWithAuth()
-      .put(`https://frozen-hamlet-18508.herokuapp.com/api/users/`, editProfile)
+      .put(`/api/users/`, editProfile)
       .then((res) => {
         console.log("response", res.data);
         getUserInfo();
